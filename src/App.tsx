@@ -1,18 +1,41 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Home from "./pages/home";
-import Dashboard from "./pages/dashboard";
-import Login from "./pages/login";
+import { lazy, Suspense } from "react";
 // import Navbar from "./components/navbar";
+
+const Home = lazy(() => import("./pages/home"));
+const Dashboard = lazy(() => import("./pages/dashboard"));
+const Login = lazy(() => import("./pages/login"));
 
 function App() {
   return (
     <Router>
       {/* <Navbar /> */}
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/"
+          element={
+            <Suspense fallback="Loading">
+              <Home />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/dashboard"
+          element={
+            <Suspense fallback="Loading">
+              <Dashboard />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <Suspense fallback="Loading">
+              <Login />
+            </Suspense>
+          }
+        />
       </Routes>
     </Router>
   );

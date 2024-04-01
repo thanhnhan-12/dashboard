@@ -1,8 +1,12 @@
+import { ConfigProvider, Typography } from "antd";
+import { customTheme } from "../../theme/palette";
 
 const Dashboard = () => {
   return (
-    <div>Dashboard</div>
-  )
-}
+    <ConfigProvider>
+      <Typography.Title level={1}>Dashboard</Typography.Title>
+    </ConfigProvider>
+  );
+};
 
-export default Dashboard
+export default Dashboard;
