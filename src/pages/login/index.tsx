@@ -1,11 +1,5 @@
-import { ConfigProvider } from "antd";
-
 const Login = () => {
-  return (
-    <ConfigProvider>
-      <div>Login</div>
-    </ConfigProvider>
-  );
+  return <div>Login</div>;
 };
 
 export default Login;
