@@ -1,0 +1,23 @@
+.ant-flex {
+  height: 100vh;
+
+  .ant-form {
+    border: 1px solid #000;
+    border-radius: 2rem;
+    padding: 3rem 7rem;
+
+    .ant-typography {
+      margin-bottom: 3rem;
+      margin-left: 1rem;
+    }
+
+    .forgot-pass {
+      margin-left: 9.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .ant-btn {
+      width: 100%;
+    }
+  }
+}
