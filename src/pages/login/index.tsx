@@ -1,12 +1,12 @@
 import { Button, Checkbox, Flex, Form, Input, type FormProps } from "antd";
 import Title from "antd/es/typography/Title";
-import "./styles.scss";
 import { Link } from "react-router-dom";
+import "./styles.scss";
 
 type FieldType = {
-  username?: string;
-  password?: string;
-  remember?: string;
+  username?: boolean;
+  password?: boolean;
+  remember?: boolean;
 };
 
 const onFinish: FormProps<FieldType>["onFinish"] = (values) => {

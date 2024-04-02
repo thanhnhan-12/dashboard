@@ -1,5 +1,5 @@
-export const CPath = {
-  home: "/",
-  dashboard: "/dashboard",
-  login: "/login",
+export const CPATH = {
+  HOME: "/",
+  DASHBOARD: "/dashboard",
+  LOGIN: "/login",
 };
