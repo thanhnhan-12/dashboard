@@ -1,23 +1,52 @@
-import { Button, Checkbox, Flex, Form, Input, type FormProps } from "antd";
+import { Button, Checkbox, Flex, Form, Input, message } from "antd";
 import Title from "antd/es/typography/Title";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthApiLogin } from "../../api/authApi";
+import { CPATH } from "../../constants/path";
 import "./styles.scss";
 
 type FieldType = {
-  username?: boolean;
-  password?: boolean;
+  username?: string;
+  password?: string;
   remember?: boolean;
 };
 
-const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
-  console.log("Success:", values);
-};
+const Login = () => {
+  const [loading, setLoading] = useState<boolean>(false);
 
-const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (errorInfo) => {
-  console.log("Failed:", errorInfo);
-};
+  const nav = useNavigate();
 
-const Login: React.FC = () => {
+  const onFinish = async (values: any) => {
+    const { username, password } = values;
+
+    if (!username || !password) {
+      message.error("Please enter both username and password.");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const isValid = await AuthApiLogin(username, password);
+
+      if (isValid) {
+        message.success("Login Successfully");
+        nav(CPATH.HOME);
+      } else {
+        message.error("Invalid username or password");
+      }
+    } catch (error) {
+      console.error("An error occurred: ", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const onFinishFailed = (errorInfo: any) => {
+    console.log("Failed:", errorInfo);
+  };
+
   return (
     <div>
       <Flex justify="center" align="center">
@@ -25,8 +54,7 @@ const Login: React.FC = () => {
           name="basic"
           labelCol={{ span: 8 }}
           wrapperCol={{ span: 16 }}
-          // style={{ maxWidth: 600 }}
-          initialValues={{ remember: true }}
+          initialValues={{ remember: false }}
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
           autoComplete="off"
@@ -55,15 +83,15 @@ const Login: React.FC = () => {
 
           <Form.Item<FieldType>
             name="remember"
-            valuePropName="unchecked"
+            valuePropName="checked"
             wrapperCol={{ offset: 8, span: 16 }}
           >
             <Checkbox>Remember me</Checkbox>
           </Form.Item>
 
           <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-            <Button type="primary" htmlType="submit">
-              Login
+            <Button type="primary" htmlType="submit" loading={loading}>
+              {loading ? "Logging in ... " : "Login"}
             </Button>
           </Form.Item>
 
