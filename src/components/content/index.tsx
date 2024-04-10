@@ -1,5 +1,6 @@
 import { Breadcrumb, Layout, theme } from "antd";
 import TableData from "../table";
+import { columns, columnsNew } from "../table/data";
 
 const { Content } = Layout;
 
@@ -32,7 +33,8 @@ const ContentLayout = () => {
           borderRadius: borderRadiusLG,
         }}
       >
-        <TableData />
+        <TableData columns={columns} />
+        <TableData columns={columnsNew} />
       </Content>
     </Layout>
   );

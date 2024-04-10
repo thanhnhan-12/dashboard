@@ -49,3 +49,15 @@ export const columns: TableColumnsType<ITableData> = [
     dataIndex: "address",
   },
 ];
+
+export const columnsNew: TableColumnsType<ITableData> = [
+    {
+      title: "City",
+      dataIndex: "name",
+    },
+  
+    {
+      title: "District",
+      dataIndex: "address",
+    },
+  ];

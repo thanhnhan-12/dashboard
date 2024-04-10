@@ -5,7 +5,7 @@ import { ButtonReloadTable } from "../button";
 import { SearchDataTable } from "../searchBar";
 import { columns, data } from "./data";
 
-const TableData = () => {
+const TableData = ({ columns }: { columns: any }) => {
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [searchTable, setSearchTable] = useState<ITableData[]>(data);
