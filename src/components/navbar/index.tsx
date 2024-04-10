@@ -1,22 +1,25 @@
-import { Link } from "react-router-dom";
+import type { MenuProps } from "antd";
+import { Layout, Menu } from "antd";
+
+const { Header } = Layout;
+
+const items1: MenuProps["items"] = ["1", "2", "3"].map((key) => ({
+  key,
+  label: `nav ${key}`,
+}));
 
 const Navbar = () => {
   return (
-    <div>
-      <div>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/dashboard">Dashboard</Link>
-          </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-        </ul>
-      </div>
-    </div>
+    <Header style={{ display: "flex", alignItems: "center" }}>
+      <div className="demo-logo" />
+      <Menu
+        theme="dark"
+        mode="horizontal"
+        defaultSelectedKeys={["1"]}
+        items={items1}
+        style={{ flex: 1, minWidth: 0 }}
+      />
+    </Header>
   );
 };
 

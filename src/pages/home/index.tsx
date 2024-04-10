@@ -1,21 +1,18 @@
-import { Button } from "antd";
-import { useNavigate } from "react-router-dom";
-import { CPATH } from "../../constants/path";
+import { Layout } from "antd";
+import ContentLayout from "../../components/content";
+import Navbar from "../../components/navbar";
+import Sidebar from "../../components/sider";
 
 const Home = () => {
-  const nav = useNavigate();
-
-  const handleLogout = () => {
-    localStorage.removeItem("isLoggedIn");
-    nav(CPATH.LOGIN);
-  };
-
   return (
     <div>
-      Home Page
-      <Button onClick={handleLogout} style={{ marginLeft: "2rem" }}>
-        Logout
-      </Button>
+      <Layout>
+        <Navbar />
+        <Layout>
+          <Sidebar />
+          <ContentLayout />
+        </Layout>
+      </Layout>
     </div>
   );
 };
