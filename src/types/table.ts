@@ -4,3 +4,16 @@ export interface ITableData {
   age: number;
   address: string;
 }
+
+export interface ITableDataNew {
+  key: React.Key;
+  city: string;
+  district: string;
+}
+
+export interface TableColumns<T> {
+  title: string;
+  dataIndex: string;
+  key?: string;
+  sorter?: (a: T, b: T) => number;
+}

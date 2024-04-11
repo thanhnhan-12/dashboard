@@ -1,22 +1,26 @@
 import { Input } from "antd";
-import { data } from "../table/data";
+import { Dispatch, SetStateAction, useState } from "react";
 
 const { Search } = Input;
 
-export const SearchDataTable = ({
+interface SearchDataTableProps<T> {
+  setSearchTable: Dispatch<SetStateAction<T[]>>;
+  customSearchFunction: (value: string) => T[];
+}
+
+export const SearchDataTable = <T extends object>({
   setSearchTable,
-}: {
-  setSearchTable: any;
-}) => {
+  customSearchFunction,
+}: SearchDataTableProps<T>) => {
+  const [searchValue, setSearchValue] = useState<string>("");
+
   const onSearch = (value: string) => {
-    const filteredData = data.filter(
-      (item) =>
-        item.name.toLowerCase().includes(value.toLowerCase()) ||
-        item.age.toString().includes(value.toLowerCase()) ||
-        item.address.toLowerCase().includes(value.toLowerCase())
-    );
-    // console.log("Filtered Data: " + filteredData);
-    setSearchTable(filteredData);
+    setSearchValue(value);
+    console.log("Value: " + value);
+
+    const filteredData = customSearchFunction(value);
+
+    setSearchTable(filteredData as T[]);
   };
 
   return (
@@ -25,6 +29,8 @@ export const SearchDataTable = ({
       onSearch={onSearch}
       enterButton
       style={{ width: "30%" }}
+      value={searchValue}
+      onChange={(e) => setSearchValue(e.target.value)}
     />
   );
 };
