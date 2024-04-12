@@ -1,29 +1,31 @@
-import { Pagination } from "antd";
+import { Pagination } from 'antd';
 
 interface CustomPaginationProps {
-  current: number;
+  currentPage: number;
   total: number;
   pageSize: number;
-  onChange: (page: number) => void;
+  onChange: (page: number, pageSize: number) => void;
 }
 
 const CustomPagination: React.FC<CustomPaginationProps> = ({
-  current,
+  currentPage,
   total,
   pageSize,
   onChange,
 }) => {
   return (
-    <Pagination
-      current={current}
-      total={total}
-      pageSize={pageSize}
-      onChange={onChange}
-      showSizeChanger
-      showQuickJumper
-      showTotal={(total) => `Total ${total} items`}
-      style={{ marginTop: "4rem" }}
-    />
+    <div>
+      <Pagination
+        current={currentPage}
+        total={total}
+        pageSize={pageSize}
+        onChange={onChange}
+        showSizeChanger
+        showQuickJumper
+        showTotal={(total, range) => ` ${range[0]} - ${range[1]} of ${total} `}
+        style={{ marginTop: '4rem' }}
+      />
+    </div>
   );
 };
 

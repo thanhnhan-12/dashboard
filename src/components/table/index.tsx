@@ -1,11 +1,11 @@
-import { Table } from "antd";
-import { ColumnsType } from "antd/es/table";
-import React, { useEffect, useState } from "react";
-import { ButtonReloadTable } from "../button";
-import { SearchDataTable } from "../searchBar";
-import CustomPagination from "../pagination";
+import { Table } from 'antd';
+import { ColumnsType } from 'antd/es/table';
+import React, { useState } from 'react';
+import { ButtonReloadTable } from '../button';
+import { SearchDataTable } from '../searchBar';
+import CustomPagination from '../pagination';
 
-interface TableDataProps<T extends object> {
+interface TableDataProps<T extends object> extends PagianationProps {
   columns: ColumnsType<T>;
   dataSource: T[];
 }
@@ -13,13 +13,14 @@ interface TableDataProps<T extends object> {
 const TableData = <T extends object>({
   columns,
   dataSource,
+  page,
+  pageSize,
+  setPage,
+  setPageSize,
 }: TableDataProps<T>) => {
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [dataTable, setDataTable] = useState<T[]>(dataSource);
-
-  const [page, setPage] = useState<number>(1);
-  const [pageSize, setPageSize] = useState<number>(10);
 
   const start = () => {
     setLoading(true);
@@ -49,14 +50,20 @@ const TableData = <T extends object>({
     });
   };
 
+  const startIndex = (page - 1) * pageSize;
+  const endIndex = page * pageSize;
+
+  // Filter Current Page Data
+  const currentPageData = dataTable.slice(startIndex, endIndex);
+
   return (
     <div>
       <div
         style={{
           marginBottom: 16,
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
         }}
       >
         <ButtonReloadTable
@@ -69,25 +76,27 @@ const TableData = <T extends object>({
         <SearchDataTable
           setSearchTable={setDataTable}
           customSearchFunction={customSearchFunction}
+          dataSource={dataTable}
         />
       </div>
 
       <Table
         rowSelection={rowSelection}
         columns={columns}
-        dataSource={dataTable}
-        showSorterTooltip={{ target: "sorter-icon" }}
-        pagination={{
-          current: page,
-          pageSize: pageSize,
-          total: 100,
-          onChange: (page, pageSize) => {
-            setPage(page);
-            setPageSize(pageSize);
-          },
+        dataSource={currentPageData}
+        showSorterTooltip={{ target: 'sorter-icon' }}
+        pagination={false}
+      />
+
+      <CustomPagination
+        currentPage={page}
+        total={dataTable.length}
+        pageSize={pageSize}
+        onChange={(page, pageSize) => {
+          setPage(page);
+          setPageSize(pageSize);
         }}
       />
-      <div>{}</div>
     </div>
   );
 };
