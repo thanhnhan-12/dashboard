@@ -1,26 +1,40 @@
-import { Table } from 'antd';
-import { ColumnsType } from 'antd/es/table';
+import { PaginationProps, Table } from 'antd';
+import { TableProps } from 'antd/es/table';
 import React, { useState } from 'react';
 import { ButtonReloadTable } from '../button';
-import { SearchDataTable } from '../searchBar';
+// import { SearchDataTable } from '../searchBar';
 import CustomPagination from '../pagination';
 
-interface TableDataProps<T extends object> extends PagianationProps {
-  columns: ColumnsType<T>;
-  dataSource: T[];
+interface ITableDataProps extends TableProps {
+  // columns: ColumnsType<T>;
+  // dataSource: T[];
+  total: number;
+  current: number;
+  pageSize: number;
+  isShowPagination?: boolean;
+  handlePagination: PaginationProps['onChange'];
+  contentPagination?: React.ReactNode;
+  paramsQuery?: TFilterParams;
+  setParamsQuery?: React.Dispatch<React.SetStateAction<TFilterParams>>;
 }
 
-const TableData = <T extends object>({
-  columns,
-  dataSource,
-  page,
+const TableData = ({
   pageSize,
-  setPage,
-  setPageSize,
-}: TableDataProps<T>) => {
+  total,
+  current,
+  isShowPagination = true,
+  handlePagination,
+  contentPagination,
+  ...props
+}: ITableDataProps) => {
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const [dataTable, setDataTable] = useState<T[]>(dataSource);
+
+  const paginationProp = {
+    total,
+    current,
+    pageSize,
+  };
 
   const start = () => {
     setLoading(true);
@@ -42,20 +56,6 @@ const TableData = <T extends object>({
 
   const hasSelected = selectedRowKeys.length > 0; // Selected Item
 
-  // Search Data Table
-  const customSearchFunction = (value: string) => {
-    return dataSource.filter((item) => {
-      const stringifiedItem = JSON.stringify(item);
-      return stringifiedItem.toLowerCase().includes(value.toLowerCase());
-    });
-  };
-
-  const startIndex = (page - 1) * pageSize;
-  const endIndex = page * pageSize;
-
-  // Filter Current Page Data
-  const currentPageData = dataTable.slice(startIndex, endIndex);
-
   return (
     <div>
       <div
@@ -72,23 +72,16 @@ const TableData = <T extends object>({
           loading={loading}
           selectedRowKeys={selectedRowKeys}
         />
-
-        <SearchDataTable
-          setSearchTable={setDataTable}
-          customSearchFunction={customSearchFunction}
-          dataSource={dataTable}
-        />
       </div>
 
       <Table
         rowSelection={rowSelection}
-        columns={columns}
-        dataSource={currentPageData}
         showSorterTooltip={{ target: 'sorter-icon' }}
-        pagination={false}
+        pagination={isShowPagination ? { pageSize: pageSize } : false}
+        {...props}
       />
 
-      <CustomPagination
+      {/* <CustomPagination
         currentPage={page}
         total={dataTable.length}
         pageSize={pageSize}
@@ -96,7 +89,12 @@ const TableData = <T extends object>({
           setPage(page);
           setPageSize(pageSize);
         }}
-      />
+      /> */}
+
+      {/* <div>
+        {isShowPagination && <CustomPagination {...paginationProp} onChange={handlePagination} />}
+        {contentPagination}
+      </div> */}
     </div>
   );
 };

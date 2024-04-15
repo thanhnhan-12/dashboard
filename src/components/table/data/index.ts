@@ -107,7 +107,7 @@ export const dataNew: ITableDataNew[] = [
   },
 ];
 
-export const columns: TableColumnsType<ITableData> = [
+export const columnsIntro: TableColumnsType<ITableData> = [
   {
     title: "Name",
     dataIndex: "name",
