@@ -1,6 +1,6 @@
 import { Input } from 'antd';
 import { SearchProps } from 'antd/es/input';
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { useDebounce } from '../../hooks';
 
 const { Search } = Input;
@@ -22,16 +22,17 @@ export const SearchDataTable = <T extends object>({
 
   // console.log('debouncedValue: ' + debouncedValue);
 
+  useEffect(() => {
+    const filteredData = customSearchFunction(debouncedValue);
+    setParamsQuery(filteredData as T[]);
+  }, [debouncedValue]);
+
   const onSearch = (value: string) => {
     setSearchValue(value);
-    // console.log(value);
-    const filteredData = customSearchFunction(value);
-    setParamsQuery(filteredData as T[]);
   };
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e?.target?.value;
-    setSearchValue(value);
+    setSearchValue(e.target.value);
   };
 
   return (
