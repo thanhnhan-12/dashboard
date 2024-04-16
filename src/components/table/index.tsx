@@ -2,12 +2,10 @@ import { PaginationProps, Table } from 'antd';
 import { TableProps } from 'antd/es/table';
 import React, { useState } from 'react';
 import { ButtonReloadTable } from '../button';
-// import { SearchDataTable } from '../searchBar';
-import CustomPagination from '../pagination';
+
+// import CustomPagination from '../pagination';
 
 interface ITableDataProps extends TableProps {
-  // columns: ColumnsType<T>;
-  // dataSource: T[];
   total: number;
   current: number;
   pageSize: number;
@@ -77,7 +75,7 @@ const TableData = ({
       <Table
         rowSelection={rowSelection}
         showSorterTooltip={{ target: 'sorter-icon' }}
-        pagination={isShowPagination ? { pageSize: pageSize } : false}
+        pagination={isShowPagination ? { pageSize } : false}
         {...props}
       />
 

@@ -1,8 +1,8 @@
-import axios from "axios";
+import axios from 'axios';
 
 export const createClient = () => {
   const instance = axios.create({
-    baseURL: "",
+    baseURL: '',
   });
 
   instance.interceptors.request.use(
@@ -11,7 +11,7 @@ export const createClient = () => {
     },
     (error) => {
       return Promise.reject(error);
-    }
+    },
   );
 
   instance.interceptors.response.use(
@@ -20,7 +20,7 @@ export const createClient = () => {
     },
     (error) => {
       return Promise.reject(error);
-    }
+    },
   );
 
   return instance;

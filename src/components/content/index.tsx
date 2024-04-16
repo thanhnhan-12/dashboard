@@ -1,9 +1,10 @@
 import { Breadcrumb, Layout, TableProps, theme } from 'antd';
+import { useState } from 'react';
+
+import { ITableData } from '../../types/table';
+import { SearchDataTable } from '../searchBar';
 import TableData from '../table';
 import { columnsIntro, columnsNew, data, dataNew } from '../table/data';
-import { SearchDataTable } from '../searchBar';
-import { useEffect, useState } from 'react';
-import { ITableData } from '../../types/table';
 
 interface IContentLayoutProps<T> extends TableProps<T> {
   pageSize?: number;

@@ -1,4 +1,4 @@
-import { Button } from "antd";
+import { Button } from 'antd';
 
 type onStart = () => void;
 
@@ -17,17 +17,12 @@ export const ButtonReloadTable: React.FC<ButtonReloadTableProps> = ({
 }) => {
   return (
     <div>
-      <Button
-        type="primary"
-        onClick={start}
-        disabled={!hasSelected}
-        loading={loading}
-      >
+      <Button type="primary" onClick={start} disabled={!hasSelected} loading={loading}>
         Reload
       </Button>
 
       <span style={{ marginLeft: 8 }}>
-        {hasSelected ? `Selected ${selectedRowKeys.length} items` : ""}
+        {hasSelected ? `Selected ${selectedRowKeys.length} items` : ''}
       </span>
     </div>
   );

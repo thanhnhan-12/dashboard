@@ -1,10 +1,10 @@
-import { Button, Checkbox, Flex, Form, Input, message } from "antd";
-import Title from "antd/es/typography/Title";
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { AuthApiLogin } from "../../api/authApi";
-import { CPATH } from "../../constants/path";
-import "./styles.scss";
+import { Button, Checkbox, Flex, Form, Input, message } from 'antd';
+import Title from 'antd/es/typography/Title';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthApiLogin } from '../../api/authApi';
+import { CPATH } from '../../constants/path';
+import './styles.scss';
 
 type FieldType = {
   username?: string;
@@ -21,7 +21,7 @@ const Login = () => {
     const { username, password } = values;
 
     if (!username || !password) {
-      message.error("Please enter both username and password.");
+      message.error('Please enter both username and password.');
       return;
     }
 
@@ -31,20 +31,20 @@ const Login = () => {
       const isValid = await AuthApiLogin(username, password);
 
       if (isValid) {
-        message.success("Login Successfully");
+        message.success('Login Successfully');
         nav(CPATH.HOME);
       } else {
-        message.error("Invalid username or password");
+        message.error('Invalid username or password');
       }
     } catch (error) {
-      console.error("An error occurred: ", error);
+      console.error('An error occurred: ', error);
     } finally {
       setLoading(false);
     }
   };
 
   const onFinishFailed = (errorInfo: any) => {
-    console.log("Failed:", errorInfo);
+    console.log('Failed:', errorInfo);
   };
 
   return (
@@ -64,7 +64,7 @@ const Login = () => {
           <Form.Item<FieldType>
             label="Username"
             name="username"
-            rules={[{ required: true, message: "Please input your username!" }]}
+            rules={[{ required: true, message: 'Please input your username!' }]}
           >
             <Input />
           </Form.Item>
@@ -72,7 +72,7 @@ const Login = () => {
           <Form.Item<FieldType>
             label="Password"
             name="password"
-            rules={[{ required: true, message: "Please input your password!" }]}
+            rules={[{ required: true, message: 'Please input your password!' }]}
           >
             <Input.Password />
           </Form.Item>
@@ -91,7 +91,7 @@ const Login = () => {
 
           <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
             <Button type="primary" htmlType="submit" loading={loading}>
-              {loading ? "Logging in ... " : "Login"}
+              {loading ? 'Logging in ... ' : 'Login'}
             </Button>
           </Form.Item>
 

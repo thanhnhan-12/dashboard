@@ -1,5 +1,5 @@
 export const CPATH = {
-  HOME: "/",
-  LOGIN: "/login",
-  DASHBOARD: "/dashboard",
+  HOME: '/',
+  LOGIN: '/login',
+  DASHBOARD: '/dashboard',
 };

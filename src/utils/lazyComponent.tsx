@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense } from 'react';
 
 export default function LazyComponent<P>(Component: React.ComponentType & any) {
   return function LazyComponent(props: P) {

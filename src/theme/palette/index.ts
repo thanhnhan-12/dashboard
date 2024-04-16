@@ -5,8 +5,7 @@ interface ConfigColor {
 
 export const customTheme: ConfigColor = {
   color: {
-    primary: "red",
+    primary: 'red',
   },
-  size: "large",
+  size: 'large',
 };
-

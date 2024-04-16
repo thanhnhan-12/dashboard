@@ -1,7 +1,6 @@
 import { Input } from 'antd';
-import { SearchProps } from 'antd/es/input';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { useDebounce } from '../../hooks';
+import { useDebounce } from '~/hooks';
 
 const { Search } = Input;
 

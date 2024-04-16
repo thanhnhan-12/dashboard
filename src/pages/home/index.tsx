@@ -1,7 +1,7 @@
-import { Layout } from "antd";
-import ContentLayout from "../../components/content";
-import Navbar from "../../components/navbar";
-import Sidebar from "../../components/sider";
+import { Layout } from 'antd';
+import ContentLayout from '../../components/content';
+import Navbar from '../../components/navbar';
+import Sidebar from '../../components/sider';
 
 const Home = () => {
   return (
