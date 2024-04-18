@@ -1,12 +1,10 @@
 import { Breadcrumb, Layout, TableProps, theme } from 'antd';
 import { useState } from 'react';
+import MInputSearch from '~molecules/m-input-search';
+import MTable from '~molecules/m-table';
+import './OTable.scss';
 
-import { ITableData } from '../../types/table';
-import { SearchDataTable } from '../searchBar';
-import TableData from '../table';
-import { columnsIntro, columnsNew, data, dataNew } from '../table/data';
-
-interface IContentLayoutProps<T> extends TableProps<T> {
+interface IOTableProps<T> extends TableProps<T> {
   pageSize?: number;
   total?: number;
   isShowPagination?: boolean;
@@ -23,7 +21,7 @@ const items = [
   { label: 'App', path: '/' },
 ];
 
-const ContentLayout = <T extends Object>({
+const OTable = <T extends Object>({
   pageSize = 10,
   columns,
   total = 0,
@@ -31,8 +29,8 @@ const ContentLayout = <T extends Object>({
   paramsQuery,
   dataSource,
   ...props
-}: IContentLayoutProps<T>) => {
-  const [searchTable, setSearchTable] = useState(data);
+}: IOTableProps<T>) => {
+  const [searchTable, setSearchTable] = useState(dataSource);
   // console.log("SearchTable: " + searchTable);
 
   const {
@@ -49,7 +47,7 @@ const ContentLayout = <T extends Object>({
   };
 
   const customSearchFunction = (value: string) => {
-    return data.filter((item) => {
+    return dataSource.filter((item) => {
       const stringifiedItem = JSON.stringify(item);
       return stringifiedItem.toLowerCase().includes(value.toLowerCase());
     });
@@ -75,14 +73,14 @@ const ContentLayout = <T extends Object>({
           borderRadius: borderRadiusLG,
         }}
       >
-        <SearchDataTable
+        <MInputSearch
           paramsQuery={searchTable}
           setParamsQuery={setSearchTable}
           customSearchFunction={customSearchFunction}
         />
 
-        <TableData
-          columns={columnsIntro}
+        <MTable
+          columns={columns}
           dataSource={searchTable}
           pageSize={pageSize}
           total={total}
@@ -97,4 +95,4 @@ const ContentLayout = <T extends Object>({
   );
 };
 
-export default ContentLayout;
+export default OTable;

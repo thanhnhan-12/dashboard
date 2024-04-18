@@ -4,22 +4,20 @@ import { useDebounce } from '~/hooks';
 
 const { Search } = Input;
 
-interface SearchDataTableProps<T> {
+interface MInputSearchTableProps<T> {
   setParamsQuery: Dispatch<SetStateAction<T[]>>;
   paramsQuery: T[];
   customSearchFunction: (value: string) => T[];
 }
 
-export const SearchDataTable = <T extends object>({
+const MInputSearch = <T extends object>({
   paramsQuery,
   setParamsQuery,
   customSearchFunction,
-}: SearchDataTableProps<T>) => {
+}: MInputSearchTableProps<T>) => {
   const [searchValue, setSearchValue] = useState<string>('');
 
   const debouncedValue = useDebounce({ value: searchValue, delay: 500 });
-
-  // console.log('debouncedValue: ' + debouncedValue);
 
   useEffect(() => {
     const filteredData = customSearchFunction(debouncedValue);
@@ -45,3 +43,5 @@ export const SearchDataTable = <T extends object>({
     />
   );
 };
+
+export default MInputSearch;

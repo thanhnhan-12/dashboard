@@ -8,7 +8,7 @@ import type { MenuProps } from 'antd';
 import { Button, Layout, Menu, theme } from 'antd';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CPATH } from '../../constants/path';
+import { CPATH } from '~constants/path';
 
 const { Sider } = Layout;
 
@@ -32,7 +32,7 @@ const items2: MenuProps['items'] = [UserOutlined, LaptopOutlined, NotificationOu
   },
 );
 
-const Sidebar = () => {
+const OSider = () => {
   const nav = useNavigate();
 
   const handleLogout = () => {
@@ -79,4 +79,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default OSider;

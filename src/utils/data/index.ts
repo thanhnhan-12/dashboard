@@ -1,5 +1,5 @@
 import type { TableColumnsType } from 'antd';
-import { ITableData, ITableDataNew } from '../../../types/table';
+import { ITableData, ITableDataNew } from '~/types/table';
 
 export const data: ITableData[] = [
   {

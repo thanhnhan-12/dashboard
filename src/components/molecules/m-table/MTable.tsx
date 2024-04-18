@@ -1,11 +1,10 @@
 import { PaginationProps, Table } from 'antd';
 import { TableProps } from 'antd/es/table';
 import React, { useState } from 'react';
-import { ButtonReloadTable } from '../button';
+import AButtonReload from '~atoms/a-button/a-button-reload';
+// import MPagination from '~molecules/m-pagination';
 
-// import CustomPagination from '../pagination';
-
-interface ITableDataProps extends TableProps {
+interface MTableProps extends TableProps {
   total: number;
   current: number;
   pageSize: number;
@@ -16,7 +15,7 @@ interface ITableDataProps extends TableProps {
   setParamsQuery?: React.Dispatch<React.SetStateAction<TFilterParams>>;
 }
 
-const TableData = ({
+const MTable = ({
   pageSize,
   total,
   current,
@@ -24,7 +23,7 @@ const TableData = ({
   handlePagination,
   contentPagination,
   ...props
-}: ITableDataProps) => {
+}: MTableProps) => {
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -64,7 +63,7 @@ const TableData = ({
           alignItems: 'center',
         }}
       >
-        <ButtonReloadTable
+        <AButtonReload
           start={start}
           hasSelected={hasSelected}
           loading={loading}
@@ -79,22 +78,12 @@ const TableData = ({
         {...props}
       />
 
-      {/* <CustomPagination
-        currentPage={page}
-        total={dataTable.length}
-        pageSize={pageSize}
-        onChange={(page, pageSize) => {
-          setPage(page);
-          setPageSize(pageSize);
-        }}
-      /> */}
-
       {/* <div>
-        {isShowPagination && <CustomPagination {...paginationProp} onChange={handlePagination} />}
-        {contentPagination}
-      </div> */}
+    {isShowPagination && <MPagination {...paginationProp} onChange={handlePagination} />}
+    {contentPagination}
+  </div> */}
     </div>
   );
 };
 
-export default TableData;
+export default MTable;

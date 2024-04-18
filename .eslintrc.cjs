@@ -18,7 +18,7 @@ module.exports = {
   parserOptions: {
     project,
   },
-  plugins: ['@typescript-eslint', 'simple-import-sort', 'react'],
+  plugins: ['@typescript-eslint', 'simple-import-sort', 'react', 'react-refresh'],
   rules: {
     'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
     'simple-import-sort/imports': 'error',

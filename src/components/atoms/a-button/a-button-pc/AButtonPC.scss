@@ -1,0 +1,52 @@
+.a-button {
+  height: 100%;
+  margin: 2rem 0;
+}
+
+/* 1. Primary */
+.atom-button-primary-hover:hover {
+  box-shadow: 0.2rem 0.4rem 0.8rem 0 #5b190014 !important;
+}
+
+.atom-button-primary-disabled {
+  background-color: #767f85 !important;
+  cursor: not-allowed !important;
+}
+
+/* 2. Secondary */
+.atom-button-secondary-hover:hover {
+  box-shadow: 0.2rem 0.4rem 0.8rem 0 #5b190014 !important;
+}
+
+.atom-button-secondary-disabled {
+  background-color: #e7e7e7 !important;
+  border-color: #767f85 !important;
+  color: #767f85 !important;
+  cursor: not-allowed !important;
+}
+
+/* 3. Ghost */
+.atom-button-ghost-hover:hover {
+  background-color: #ffece5 !important;
+  color: #ff4500 !important;
+}
+
+.atom-button-ghost-disabled {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  color: #767f85 !important;
+  cursor: not-allowed !important;
+}
+
+/* 2. Accent */
+.atom-button-accent-hover:hover {
+  box-shadow: 0.4rem 0.6rem 1rem 0 #3096001a !important;
+  color: #fff !important;
+}
+
+.atom-button-accent-disabled {
+  background-color: #767f85 !important;
+  border-color: transparent !important;
+  color: #fff !important;
+  cursor: not-allowed !important;
+}

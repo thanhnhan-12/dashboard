@@ -2,14 +2,14 @@ import { Button } from 'antd';
 
 type onStart = () => void;
 
-interface ButtonReloadTableProps {
+interface AButtonReloadProps {
   start: onStart;
   hasSelected: boolean;
   loading: boolean;
   selectedRowKeys: React.Key[];
 }
 
-export const ButtonReloadTable: React.FC<ButtonReloadTableProps> = ({
+const AButtonReload: React.FC<AButtonReloadProps> = ({
   start,
   hasSelected,
   loading,
@@ -27,3 +27,5 @@ export const ButtonReloadTable: React.FC<ButtonReloadTableProps> = ({
     </div>
   );
 };
+
+export default AButtonReload;

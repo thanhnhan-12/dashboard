@@ -1,7 +1,7 @@
 import { Pagination } from 'antd';
 import type { PaginationProps } from 'antd';
 
-const CustomPagination = ({
+const MPagination = ({
   showSizeChanger = false,
   prevIcon,
   nextIcon,
@@ -17,4 +17,4 @@ const CustomPagination = ({
   );
 };
 
-export default CustomPagination;
+export default MPagination;

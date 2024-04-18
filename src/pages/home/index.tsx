@@ -1,16 +1,16 @@
 import { Layout } from 'antd';
-import ContentLayout from '../../components/content';
-import Navbar from '../../components/navbar';
-import Sidebar from '../../components/sider';
+import ONavbar from '~organisms/o-navbar';
+import OSider from '~organisms/o-sider';
+import OTab from '~organisms/o-tab';
 
 const Home = () => {
   return (
     <div>
       <Layout>
-        <Navbar />
+        <ONavbar />
         <Layout>
-          <Sidebar />
-          <ContentLayout />
+          <OSider />
+          <OTab />
         </Layout>
       </Layout>
     </div>
