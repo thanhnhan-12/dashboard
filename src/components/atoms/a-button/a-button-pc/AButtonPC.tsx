@@ -1,16 +1,18 @@
 import { Button, ButtonProps, Row } from 'antd';
-import { ReactNode, useState } from 'react';
+import { ReactNode } from 'react';
 import { UpOutlined, LeftOutlined, RightOutlined, LoadingOutlined } from '@ant-design/icons';
 import './AButtonPC.scss';
 import clsx from 'clsx';
+import { ETypeAButtonPC } from '~/types/enum.type';
 
 export interface IAButtonPC extends Omit<ButtonProps, 'type'> {
-  type: 'primary' | 'secondary' | 'ghost' | 'accent';
+  type: ETypeAButtonPC;
   className?: ButtonProps['className'];
   topIcon?: ReactNode;
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
-  loadingIcon: boolean;
+  loadingIcon?: boolean;
+  handleButtonLoading?: () => void;
 }
 
 const AButtonPC = ({
@@ -24,48 +26,62 @@ const AButtonPC = ({
   rightIcon = <RightOutlined />,
   loading,
   loadingIcon,
+  disabled,
+  handleButtonLoading,
   ...props
 }: IAButtonPC) => {
-  const [isLoading, setIsLoading] = useState(loading);
+  const typeToClassName = {
+    [ETypeAButtonPC.PRIMARY]: loading
+      ? 'atom-button-primary-loading'
+      : disabled
+        ? 'atom-button-primary-disabled'
+        : 'atom-button-primary-default',
+    [ETypeAButtonPC.SECONDARY]: loading
+      ? 'atom-button-secondary-loading'
+      : disabled
+        ? 'atom-button-secondary-disabled'
+        : 'atom-button-secondary-default',
+    [ETypeAButtonPC.GHOST]: loading
+      ? 'atom-button-ghost-loading'
+      : disabled
+        ? 'atom-button-ghost-disabled'
+        : 'atom-button-ghost-default',
+    [ETypeAButtonPC.ACCENT]: loading
+      ? 'atom-button-accent-loading'
+      : disabled
+        ? 'atom-button-accent-disabled'
+        : 'atom-button-accent-default',
+  };
 
-  const classAntd = clsx('a-button', type, className);
+  const classAntd = clsx('a-button', type, typeToClassName[type]);
 
   let typeButton;
 
   switch (type) {
-    case 'primary':
-      style = { backgroundColor: '#FF4500', color: '#fff', border: 'none' };
+    case ETypeAButtonPC.PRIMARY:
+      typeButton = { backgroundColor: '#FF4500', color: '#fff', border: 'none' };
       break;
-    case 'secondary':
-      style = { backgroundColor: ' #fff', color: '#FF4500', borderColor: '#FF4500' };
+    case ETypeAButtonPC.SECONDARY:
+      typeButton = { backgroundColor: ' #fff', color: '#FF4500', borderColor: '#FF4500' };
       break;
-    case 'ghost':
-      style = { backgroundColor: ' #fff', color: '#FF4500', border: 'none' };
+    case ETypeAButtonPC.GHOST:
+      typeButton = { backgroundColor: ' #fff', color: '#FF4500', border: 'none' };
       break;
-    case 'accent':
-      style = { backgroundColor: '#FF6B00', color: '#fff', border: 'none' };
+    case ETypeAButtonPC.ACCENT:
+      typeButton = { backgroundColor: '#FF6B00', color: '#fff', border: 'none' };
       break;
     default:
-      typeButton = {};
+      typeButton = { backgroundColor: '#FF4500', color: '#fff', border: 'none' };
   }
-
-  const handleLoading = () => {
-    if (loadingIcon) {
-      // console.log('Loading: ', loadingIcon);
-      setIsLoading(true);
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 3000);
-    }
-  };
 
   return (
     <div>
       <Button
         style={{ ...style, ...typeButton }}
         className={classAntd}
-        onClick={handleLoading}
-        loading={isLoading}
+        onClick={handleButtonLoading}
+        loading={loadingIcon}
+        disabled={disabled}
         {...props}
       >
         <Row>
@@ -74,7 +90,7 @@ const AButtonPC = ({
             <div style={{ display: 'flex' }}>
               {leftIcon && <div>{leftIcon}</div>}
               <div style={{ margin: '0 1rem' }}>{children}</div>
-              {isLoading ? <LoadingOutlined /> : rightIcon && <div>{rightIcon}</div>}
+              {loadingIcon ? <LoadingOutlined /> : rightIcon && <div>{rightIcon}</div>}
             </div>
           </div>
         </Row>

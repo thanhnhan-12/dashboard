@@ -9,6 +9,8 @@ const MFormButton = ({
   type,
   size,
   loadingIcon,
+  disabled,
+  handleButtonLoading,
 }: MFormButtonProps) => {
   return (
     <div>
@@ -18,6 +20,8 @@ const MFormButton = ({
         className={className}
         htmlType={htmlType}
         loadingIcon={loadingIcon}
+        disabled={disabled}
+        handleButtonLoading={handleButtonLoading}
       >
         {children}
       </AButtonPC>

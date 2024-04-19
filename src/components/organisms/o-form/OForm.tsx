@@ -1,162 +1,125 @@
 import Title from 'antd/es/typography/Title';
+import { useState } from 'react';
+import { ETypeAButtonPC } from '~/types/enum.type';
 import MFormButton from '~molecules/m-form-button';
 
 const OForm = () => {
+  const [isLoading, setIsLoading] = useState({
+    primary: false,
+    secondary: false,
+    ghost: false,
+    accent: false,
+  });
+
+  const handleButtonLoading = (type: string) => {
+    if (isLoading) {
+      // console.log('Loading: ', isLoading.primary);
+      setIsLoading((prevState) => ({ ...prevState, [type]: true }));
+      setTimeout(() => {
+        setIsLoading((prevState) => ({ ...prevState, [type]: false }));
+      }, 1000);
+    }
+  };
+
   return (
     <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
       <div>
         <Title>Primary</Title>
         {/* Default */}
-        <MFormButton
-          type="primary"
-          className="atom-button-primary-default"
-          children="テキスト"
-          size="large"
-          loadingIcon={false}
-        />
+        <MFormButton type={ETypeAButtonPC.PRIMARY} children="テキスト" size="large" />
 
         {/* Hover */}
-        <MFormButton
-          type="primary"
-          className="atom-button-primary-hover"
-          children="テキスト"
-          size="large"
-          loadingIcon={false}
-        />
+        <MFormButton type={ETypeAButtonPC.PRIMARY} children="テキスト" size="large" />
 
         {/* Disabled */}
         <MFormButton
-          type="primary"
-          className="atom-button-primary-disabled"
+          type={ETypeAButtonPC.PRIMARY}
           children="テキスト"
           size="large"
-          loadingIcon={false}
+          disabled={true}
         />
 
         {/* Loading */}
         <MFormButton
-          type="primary"
-          className="atom-button-primary-loading"
+          type={ETypeAButtonPC.PRIMARY}
           children="テキスト"
           size="large"
-          loadingIcon={true}
+          loadingIcon={isLoading.primary}
+          handleButtonLoading={() => handleButtonLoading('primary')}
         />
       </div>
 
       <div>
         <Title>Secondary</Title>
         {/* Default */}
-        <MFormButton
-          type="secondary"
-          className="atom-button-secondary-default"
-          children="テキスト"
-          size="large"
-          loadingIcon={false}
-        />
+        <MFormButton type={ETypeAButtonPC.SECONDARY} children="テキスト" size="large" />
 
         {/* Hover */}
-        <MFormButton
-          type="secondary"
-          className="atom-button-secondary-hover"
-          children="テキスト"
-          size="large"
-          loadingIcon={false}
-        />
+        <MFormButton type={ETypeAButtonPC.SECONDARY} children="テキスト" size="large" />
 
         {/* Disabled */}
         <MFormButton
-          type="secondary"
-          className="atom-button-secondary-disabled"
+          type={ETypeAButtonPC.SECONDARY}
           children="テキスト"
           size="large"
-          loadingIcon={false}
+          disabled={true}
         />
 
         {/* Loading */}
         <MFormButton
-          type="secondary"
-          className="atom-button-secondary-loading"
+          type={ETypeAButtonPC.SECONDARY}
           children="テキスト"
           size="large"
-          loadingIcon={true}
+          loadingIcon={isLoading.secondary}
+          handleButtonLoading={() => handleButtonLoading('secondary')}
         />
       </div>
 
       <div>
         <Title>Ghost</Title>
         {/* Default */}
-        <MFormButton
-          type="ghost"
-          className="atom-button-ghost-default"
-          children="テキスト"
-          size="large"
-          loadingIcon={false}
-        />
+        <MFormButton type={ETypeAButtonPC.GHOST} children="テキスト" size="large" />
 
         {/* Hover */}
-        <MFormButton
-          type="ghost"
-          className="atom-button-ghost-hover"
-          children="テキスト"
-          size="large"
-          loadingIcon={false}
-        />
+        <MFormButton type={ETypeAButtonPC.GHOST} children="テキスト" size="large" />
 
         {/* Disabled */}
-        <MFormButton
-          type="ghost"
-          className="atom-button-ghost-disabled"
-          children="テキスト"
-          size="large"
-          loadingIcon={false}
-        />
+        <MFormButton type={ETypeAButtonPC.GHOST} children="テキスト" size="large" disabled={true} />
 
         {/* Loading */}
         <MFormButton
-          type="ghost"
+          type={ETypeAButtonPC.GHOST}
           className="atom-button-ghost-loading"
           children="テキスト"
           size="large"
-          loadingIcon={true}
+          loadingIcon={isLoading.ghost}
+          handleButtonLoading={() => handleButtonLoading('ghost')}
         />
       </div>
 
       <div>
         <Title>Accent</Title>
         {/* Default */}
-        <MFormButton
-          type="accent"
-          className="atom-button-accent-default"
-          children="テキスト"
-          size="large"
-          loadingIcon={false}
-        />
+        <MFormButton type={ETypeAButtonPC.ACCENT} children="テキスト" size="large" />
 
         {/* Hover */}
-        <MFormButton
-          type="accent"
-          className="atom-button-accent-hover"
-          children="テキスト"
-          size="large"
-          loadingIcon={false}
-        />
+        <MFormButton type={ETypeAButtonPC.ACCENT} children="テキスト" size="large" />
 
         {/* Disabled */}
         <MFormButton
-          type="accent"
-          className="atom-button-accent-disabled"
+          type={ETypeAButtonPC.ACCENT}
           children="テキスト"
           size="large"
-          loadingIcon={false}
+          disabled={true}
         />
 
         {/* Loading */}
         <MFormButton
-          type="accent"
-          className="atom-button-accent-loading"
+          type={ETypeAButtonPC.ACCENT}
           children="テキスト"
           size="large"
-          loadingIcon={true}
+          loadingIcon={isLoading.accent}
+          handleButtonLoading={() => handleButtonLoading('accent')}
         />
       </div>
     </div>
