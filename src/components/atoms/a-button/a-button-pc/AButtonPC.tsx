@@ -30,30 +30,22 @@ const AButtonPC = ({
   handleButtonLoading,
   ...props
 }: IAButtonPC) => {
-  const typeToClassName = {
-    [ETypeAButtonPC.PRIMARY]: loading
-      ? 'atom-button-primary-loading'
-      : disabled
-        ? 'atom-button-primary-disabled'
-        : 'atom-button-primary-default',
-    [ETypeAButtonPC.SECONDARY]: loading
-      ? 'atom-button-secondary-loading'
-      : disabled
-        ? 'atom-button-secondary-disabled'
-        : 'atom-button-secondary-default',
-    [ETypeAButtonPC.GHOST]: loading
-      ? 'atom-button-ghost-loading'
-      : disabled
-        ? 'atom-button-ghost-disabled'
-        : 'atom-button-ghost-default',
-    [ETypeAButtonPC.ACCENT]: loading
-      ? 'atom-button-accent-loading'
-      : disabled
-        ? 'atom-button-accent-disabled'
-        : 'atom-button-accent-default',
+  // combine type of classNames
+  const getTypeClassName = (type: ETypeAButtonPC, loading: boolean, disabled: boolean) => {
+    let status = 'default';
+    if (loading) {
+      status = 'loading';
+    } else if (disabled) {
+      status = 'disabled';
+    }
+    return `atom-button-${type}-${status}`;
   };
 
-  const classAntd = clsx('a-button', type, typeToClassName[type]);
+  const classAntd = clsx(
+    'a-button',
+    type,
+    getTypeClassName(type, loading as boolean, disabled as boolean),
+  );
 
   let typeButton;
 
@@ -90,7 +82,7 @@ const AButtonPC = ({
             <div style={{ display: 'flex' }}>
               {leftIcon && <div>{leftIcon}</div>}
               <div style={{ margin: '0 1rem' }}>{children}</div>
-              {loadingIcon ? <LoadingOutlined /> : rightIcon && <div>{rightIcon}</div>}
+              {loading ? <LoadingOutlined /> : rightIcon && <div>{rightIcon}</div>}
             </div>
           </div>
         </Row>

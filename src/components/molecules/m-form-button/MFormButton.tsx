@@ -8,7 +8,7 @@ const MFormButton = ({
   htmlType,
   type,
   size,
-  loadingIcon,
+  loading,
   disabled,
   handleButtonLoading,
 }: MFormButtonProps) => {
@@ -19,7 +19,7 @@ const MFormButton = ({
         size={size}
         className={className}
         htmlType={htmlType}
-        loadingIcon={loadingIcon}
+        loading={loading}
         disabled={disabled}
         handleButtonLoading={handleButtonLoading}
       >

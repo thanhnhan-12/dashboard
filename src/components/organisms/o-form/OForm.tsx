@@ -44,7 +44,7 @@ const OForm = () => {
           type={ETypeAButtonPC.PRIMARY}
           children="テキスト"
           size="large"
-          loadingIcon={isLoading.primary}
+          loading={isLoading.primary}
           handleButtonLoading={() => handleButtonLoading('primary')}
         />
       </div>
@@ -70,7 +70,7 @@ const OForm = () => {
           type={ETypeAButtonPC.SECONDARY}
           children="テキスト"
           size="large"
-          loadingIcon={isLoading.secondary}
+          loading={isLoading.secondary}
           handleButtonLoading={() => handleButtonLoading('secondary')}
         />
       </div>
@@ -92,7 +92,7 @@ const OForm = () => {
           className="atom-button-ghost-loading"
           children="テキスト"
           size="large"
-          loadingIcon={isLoading.ghost}
+          loading={isLoading.ghost}
           handleButtonLoading={() => handleButtonLoading('ghost')}
         />
       </div>
@@ -118,7 +118,7 @@ const OForm = () => {
           type={ETypeAButtonPC.ACCENT}
           children="テキスト"
           size="large"
-          loadingIcon={isLoading.accent}
+          loading={isLoading.accent}
           handleButtonLoading={() => handleButtonLoading('accent')}
         />
       </div>
