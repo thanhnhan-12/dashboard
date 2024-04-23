@@ -7,12 +7,39 @@ interface IOLoginForm {
   username: string;
   password: string;
   email: string;
+  phoneNumber: string;
   handleUsernameChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const OLoginForm = ({ form, username, email, password, handleUsernameChange }: IOLoginForm) => {
+const OLoginForm = ({
+  form,
+  username,
+  email,
+  password,
+  phoneNumber,
+  handleUsernameChange,
+}: IOLoginForm) => {
   return (
     <Form form={form}>
+      <MFormInput
+        inputType={ETypeInputField.DEFAULT}
+        type="number"
+        value={phoneNumber}
+        placeholder="でんわ"
+        id="でんわ"
+        name="でんわ"
+        rules={[
+          {
+            required: true,
+            whitespace: true,
+            message: '注意する',
+            type: 'string',
+            min: 10,
+          },
+        ]}
+        onChange={handleUsernameChange}
+      />
+
       <MFormInput
         inputType={ETypeInputField.LEFT}
         type="text"
@@ -24,6 +51,7 @@ const OLoginForm = ({ form, username, email, password, handleUsernameChange }: I
           {
             required: true,
             whitespace: true,
+            message: '注意する',
             type: 'string',
             min: 8,
           },
@@ -42,9 +70,11 @@ const OLoginForm = ({ form, username, email, password, handleUsernameChange }: I
           {
             required: true,
             whitespace: true,
+            message: '注意する',
             type: 'email',
           },
         ]}
+        // disabled
         onChange={handleUsernameChange}
       />
 
@@ -60,10 +90,12 @@ const OLoginForm = ({ form, username, email, password, handleUsernameChange }: I
           {
             required: true,
             whitespace: true,
+            message: '注意する',
             type: 'string',
             min: 8,
           },
         ]}
+        disabled
         onChange={handleUsernameChange}
       />
     </Form>

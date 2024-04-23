@@ -24,17 +24,17 @@ const AInput = ({
   disabled,
   onChange,
 }: IAInput) => {
-  const classAntd = clsx('a-input', type);
+  const classAntd = clsx('a-input', type, { disabled: disabled });
 
   switch (inputType) {
     case ETypeInputField.LEFT:
       prefix = <LeftOutlined />;
       break;
     case ETypeInputField.RIGHT:
-      suffix = <RightOutlined />;
+      suffix = <RightOutlined className={disabled ? 'disabled-icon' : ''} />;
       break;
     case ETypeInputField.SUFFIX:
-      suffix = suffix && <span>{suffix}</span>;
+      suffix = suffix && <span className="suffixText">{suffix}</span>;
       break;
     default:
       break;

@@ -1,5 +1,33 @@
 .a-input {
   border-color: #abb8c5;
+  border-radius: 0.4rem;
+  width: 20%;
+  padding: 1.2rem;
+  .ant-input-prefix,
+  .ant-input-suffix {
+    color: #abb8c5;
+  }
+
+  ::placeholder {
+    color: #abb8c5;
+  }
+  
+  &.disabled {
+    border-color: #abb8c5;
+  }
+
+  &.disabled .ant-input-disabled::placeholder {
+    color: #abb8c5;
+  }
+
+  .ant-input-suffix .disabled-icon {
+    color: #121212;
+  }
+
+  .ant-input-suffix .suffixText {
+    color: #121212;
+    font-weight: 700;
+  }
 
   &:hover {
     border-color: #abb8c5;

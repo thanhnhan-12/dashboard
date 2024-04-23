@@ -1,6 +1,6 @@
 import { Form } from 'antd';
 import Title from 'antd/es/typography/Title';
-import { ChangeEvent, useState } from 'react';
+import { useState } from 'react';
 import { ETypeAButtonPC } from '~/types/enum.type';
 import MFormButton from '~molecules/m-form-button';
 import OLoginForm from '~organisms/o-login-form';
@@ -18,6 +18,7 @@ const OForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
 
   const handleButtonLoading = (type: string) => {
     if (isLoading) {
@@ -32,114 +33,124 @@ const OForm = () => {
   const handleUsernameChange = () => {};
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center' }}>
-      <div>
-        <Title>Primary</Title>
-        {/* Default */}
-        <MFormButton type={ETypeAButtonPC.PRIMARY} children="テキスト" size="large" />
+    <div>
+      <div style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center' }}>
+        <div>
+          <Title>Primary</Title>
+          {/* Default */}
+          <MFormButton type={ETypeAButtonPC.PRIMARY} children="テキスト" size="large" />
 
-        {/* Hover */}
-        <MFormButton type={ETypeAButtonPC.PRIMARY} children="テキスト" size="large" />
+          {/* Hover */}
+          <MFormButton type={ETypeAButtonPC.PRIMARY} children="テキスト" size="large" />
 
-        {/* Disabled */}
-        <MFormButton
-          type={ETypeAButtonPC.PRIMARY}
-          children="テキスト"
-          size="large"
-          disabled={true}
-        />
+          {/* Disabled */}
+          <MFormButton
+            type={ETypeAButtonPC.PRIMARY}
+            children="テキスト"
+            size="large"
+            disabled={true}
+          />
 
-        {/* Loading */}
-        <MFormButton
-          type={ETypeAButtonPC.PRIMARY}
-          children="テキスト"
-          size="large"
-          loading={isLoading.primary}
-          handleButtonLoading={() => handleButtonLoading('primary')}
-        />
+          {/* Loading */}
+          <MFormButton
+            type={ETypeAButtonPC.PRIMARY}
+            children="テキスト"
+            size="large"
+            loading={isLoading.primary}
+            handleButtonLoading={() => handleButtonLoading('primary')}
+          />
+        </div>
+
+        <div>
+          <Title>Secondary</Title>
+          {/* Default */}
+          <MFormButton type={ETypeAButtonPC.SECONDARY} children="テキスト" size="large" />
+
+          {/* Hover */}
+          <MFormButton type={ETypeAButtonPC.SECONDARY} children="テキスト" size="large" />
+
+          {/* Disabled */}
+          <MFormButton
+            type={ETypeAButtonPC.SECONDARY}
+            children="テキスト"
+            size="large"
+            disabled={true}
+          />
+
+          {/* Loading */}
+          <MFormButton
+            type={ETypeAButtonPC.SECONDARY}
+            children="テキスト"
+            size="large"
+            loading={isLoading.secondary}
+            handleButtonLoading={() => handleButtonLoading('secondary')}
+          />
+        </div>
+
+        <div>
+          <Title>Ghost</Title>
+          {/* Default */}
+          <MFormButton type={ETypeAButtonPC.GHOST} children="テキスト" size="large" />
+
+          {/* Hover */}
+          <MFormButton type={ETypeAButtonPC.GHOST} children="テキスト" size="large" />
+
+          {/* Disabled */}
+          <MFormButton
+            type={ETypeAButtonPC.GHOST}
+            children="テキスト"
+            size="large"
+            disabled={true}
+          />
+
+          {/* Loading */}
+          <MFormButton
+            type={ETypeAButtonPC.GHOST}
+            className="atom-button-ghost-loading"
+            children="テキスト"
+            size="large"
+            loading={isLoading.ghost}
+            handleButtonLoading={() => handleButtonLoading('ghost')}
+          />
+        </div>
+
+        <div>
+          <Title>Accent</Title>
+          {/* Default */}
+          <MFormButton type={ETypeAButtonPC.ACCENT} children="テキスト" size="large" />
+
+          {/* Hover */}
+          <MFormButton type={ETypeAButtonPC.ACCENT} children="テキスト" size="large" />
+
+          {/* Disabled */}
+          <MFormButton
+            type={ETypeAButtonPC.ACCENT}
+            children="テキスト"
+            size="large"
+            disabled={true}
+          />
+
+          {/* Loading */}
+          <MFormButton
+            type={ETypeAButtonPC.ACCENT}
+            children="テキスト"
+            size="large"
+            loading={isLoading.accent}
+            handleButtonLoading={() => handleButtonLoading('accent')}
+          />
+        </div>
       </div>
 
-      <div>
-        <Title>Secondary</Title>
-        {/* Default */}
-        <MFormButton type={ETypeAButtonPC.SECONDARY} children="テキスト" size="large" />
-
-        {/* Hover */}
-        <MFormButton type={ETypeAButtonPC.SECONDARY} children="テキスト" size="large" />
-
-        {/* Disabled */}
-        <MFormButton
-          type={ETypeAButtonPC.SECONDARY}
-          children="テキスト"
-          size="large"
-          disabled={true}
-        />
-
-        {/* Loading */}
-        <MFormButton
-          type={ETypeAButtonPC.SECONDARY}
-          children="テキスト"
-          size="large"
-          loading={isLoading.secondary}
-          handleButtonLoading={() => handleButtonLoading('secondary')}
+      <div style={{ marginLeft: '2rem' }}>
+        <OLoginForm
+          form={form}
+          username={username}
+          password={password}
+          email={email}
+          phoneNumber={phoneNumber}
+          handleUsernameChange={handleUsernameChange}
         />
       </div>
-
-      <div>
-        <Title>Ghost</Title>
-        {/* Default */}
-        <MFormButton type={ETypeAButtonPC.GHOST} children="テキスト" size="large" />
-
-        {/* Hover */}
-        <MFormButton type={ETypeAButtonPC.GHOST} children="テキスト" size="large" />
-
-        {/* Disabled */}
-        <MFormButton type={ETypeAButtonPC.GHOST} children="テキスト" size="large" disabled={true} />
-
-        {/* Loading */}
-        <MFormButton
-          type={ETypeAButtonPC.GHOST}
-          className="atom-button-ghost-loading"
-          children="テキスト"
-          size="large"
-          loading={isLoading.ghost}
-          handleButtonLoading={() => handleButtonLoading('ghost')}
-        />
-      </div>
-
-      <div>
-        <Title>Accent</Title>
-        {/* Default */}
-        <MFormButton type={ETypeAButtonPC.ACCENT} children="テキスト" size="large" />
-
-        {/* Hover */}
-        <MFormButton type={ETypeAButtonPC.ACCENT} children="テキスト" size="large" />
-
-        {/* Disabled */}
-        <MFormButton
-          type={ETypeAButtonPC.ACCENT}
-          children="テキスト"
-          size="large"
-          disabled={true}
-        />
-
-        {/* Loading */}
-        <MFormButton
-          type={ETypeAButtonPC.ACCENT}
-          children="テキスト"
-          size="large"
-          loading={isLoading.accent}
-          handleButtonLoading={() => handleButtonLoading('accent')}
-        />
-      </div>
-
-      <OLoginForm
-        form={form}
-        username={username}
-        password={password}
-        email={email}
-        handleUsernameChange={handleUsernameChange}
-      />
     </div>
   );
 };
