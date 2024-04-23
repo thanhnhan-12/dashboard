@@ -1,7 +1,9 @@
+import { Form } from 'antd';
 import Title from 'antd/es/typography/Title';
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { ETypeAButtonPC } from '~/types/enum.type';
 import MFormButton from '~molecules/m-form-button';
+import OLoginForm from '~organisms/o-login-form';
 
 const OForm = () => {
   const [isLoading, setIsLoading] = useState({
@@ -10,6 +12,12 @@ const OForm = () => {
     ghost: false,
     accent: false,
   });
+
+  const [form] = Form.useForm();
+
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
 
   const handleButtonLoading = (type: string) => {
     if (isLoading) {
@@ -21,8 +29,10 @@ const OForm = () => {
     }
   };
 
+  const handleUsernameChange = () => {};
+
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
+    <div style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center' }}>
       <div>
         <Title>Primary</Title>
         {/* Default */}
@@ -122,6 +132,14 @@ const OForm = () => {
           handleButtonLoading={() => handleButtonLoading('accent')}
         />
       </div>
+
+      <OLoginForm
+        form={form}
+        username={username}
+        password={password}
+        email={email}
+        handleUsernameChange={handleUsernameChange}
+      />
     </div>
   );
 };

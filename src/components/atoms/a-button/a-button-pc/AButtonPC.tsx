@@ -1,9 +1,9 @@
+import { LeftOutlined, LoadingOutlined, RightOutlined, UpOutlined } from '@ant-design/icons';
 import { Button, ButtonProps, Row } from 'antd';
-import { ReactNode } from 'react';
-import { UpOutlined, LeftOutlined, RightOutlined, LoadingOutlined } from '@ant-design/icons';
-import './AButtonPC.scss';
 import clsx from 'clsx';
+import { ReactNode } from 'react';
 import { ETypeAButtonPC } from '~/types/enum.type';
+import './AButtonPC.scss';
 
 export interface IAButtonPC extends Omit<ButtonProps, 'type'> {
   type: ETypeAButtonPC;

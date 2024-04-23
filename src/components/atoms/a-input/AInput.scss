@@ -1,0 +1,11 @@
+.a-input {
+  border-color: #abb8c5;
+
+  &:hover {
+    border-color: #abb8c5;
+  }
+
+  &:focus-within {
+    border-color: #ff4500 !important;
+  }
+}

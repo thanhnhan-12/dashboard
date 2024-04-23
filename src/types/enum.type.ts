@@ -4,3 +4,10 @@ export enum ETypeAButtonPC {
   GHOST = 'ghost',
   ACCENT = 'accent',
 }
+
+export enum ETypeInputField {
+  DEFAULT = 'default',
+  LEFT = 'left',
+  RIGHT = 'right',
+  SUFFIX = 'suffix',
+}
