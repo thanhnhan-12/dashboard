@@ -1,4 +1,4 @@
-import type { TableColumnsType } from 'antd';
+import type { MenuProps, TableColumnsType } from 'antd';
 import { ITableData, ITableDataNew } from '~/types/table';
 
 export const data: ITableData[] = [
@@ -135,5 +135,20 @@ export const columnsNew: TableColumnsType<ITableDataNew> = [
   {
     title: 'District',
     dataIndex: 'district',
+  },
+];
+
+export const itemsSelect = [
+  {
+    value: '1',
+    label: 'Item 1',
+  },
+  {
+    value: '2',
+    label: 'Item 2',
+  },
+  {
+    value: '3',
+    label: 'Item 3',
   },
 ];

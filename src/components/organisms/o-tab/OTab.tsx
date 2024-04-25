@@ -1,9 +1,10 @@
 import type { TabsProps } from 'antd';
 import { Tabs } from 'antd';
-import OTable from '~organisms/o-table';
-import { columnsIntro, data } from '~utils/data';
-import './OTab.scss';
 import OForm from '~organisms/o-form';
+import OTable from '~organisms/o-table';
+import { columnsIntro, data, itemsSelect } from '~utils/data';
+import './OTab.scss';
+import MSelect from '~molecules/m-select';
 
 const onChange = (key: string) => {
   console.log(key);
@@ -22,8 +23,12 @@ const items: TabsProps['items'] = [
   },
   {
     key: '3',
-    label: 'Input',
-    children: '',
+    label: 'Dropdown',
+    children: (
+      <div style={{ marginLeft: '2rem' }}>
+        <MSelect options={itemsSelect} />
+      </div>
+    ),
   },
 ];
 

@@ -1,4 +1,5 @@
 .a-input {
+  font-family: 'Noto Sans JP';
   border-color: #abb8c5;
   border-radius: 0.4rem;
   width: 20%;
@@ -11,7 +12,7 @@
   ::placeholder {
     color: #abb8c5;
   }
-  
+
   &.disabled {
     border-color: #abb8c5;
   }

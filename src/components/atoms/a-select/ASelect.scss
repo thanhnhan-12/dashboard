@@ -1,0 +1,24 @@
+.a-select {
+  font-family: 'Noto Sans JP';
+  width: 20rem !important;
+  height: 4.8rem;
+  .ant-select-selector {
+    border-color: #abb8c5 !important;
+    .ant-select-selection-placeholder {
+      color: #abb8c5 !important;
+    }
+  }
+
+  .ant-select-arrow {
+    color: #121212;
+  }
+  
+  &.ant-select-status-error {
+    .ant-select-selector {
+      border-color: #e3171f !important;
+      .ant-select-selection-placeholder {
+        color: #e3171f !important;
+      }
+    }
+  }
+}

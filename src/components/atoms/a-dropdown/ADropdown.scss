@@ -1,0 +1,23 @@
+.a-dropdown {
+  font-family: 'Noto Sans JP';
+
+  &.disabled .ant-space {
+    background-color: #e7e7e7;
+  }
+
+  .ant-space {
+    border: 1px solid #abb8c5;
+    border-radius: 0.4rem;
+    padding: 1.2rem;
+    width: 20rem;
+    color: #abb8c5;
+    justify-content: space-between;
+    align-items: center;
+
+    .ant-space-item {
+      .anticon-down {
+        color: #121212;
+      }
+    }
+  }
+}
