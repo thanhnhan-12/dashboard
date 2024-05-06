@@ -31,7 +31,6 @@ const OTable = <T extends Object>({
   ...props
 }: IOTableProps<T>) => {
   const [searchTable, setSearchTable] = useState(dataSource);
-  // console.log("SearchTable: " + searchTable);
 
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -52,6 +51,25 @@ const OTable = <T extends Object>({
       return stringifiedItem.toLowerCase().includes(value.toLowerCase());
     });
   };
+
+  // const memoizedTable = useMemo(
+  //   () => (
+  //     <MTable
+  //       columns={columns}
+  //       dataSource={searchTable}
+  //       pageSize={pageSize}
+  //       total={total}
+  //       current={paramsQuery?.current_page || 1}
+  //       handlePagination={handlePagination}
+  //       {...props}
+  //     />
+  //   ),
+  //   [pageSize, columns, total, setParamsQuery, paramsQuery, dataSource, searchTable, props],
+  // );
+
+  // useEffect(() => {
+  //   console.log('Table is re-rendered');
+  // }, [memoizedTable, handlePagination, customSearchFunction]);
 
   return (
     <Layout style={{ padding: '0 24px 24px' }}>

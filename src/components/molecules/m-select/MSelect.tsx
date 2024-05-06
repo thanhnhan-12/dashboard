@@ -8,11 +8,11 @@ interface IMSelect extends IASelect {
   form?: FormInstance<any>;
 }
 
-const MSelect = ({ form, options, disabled }: IMSelect) => {
+const MSelect = ({ form, options, placeholder, disabled }: IMSelect) => {
   return (
     <Form form={form}>
       <Form.Item id="select" name="select" rules={[{ required: true, message: '注意する' }]}>
-        <ASelect options={options} disabled={disabled} />
+        <ASelect options={options} placeholder={placeholder} disabled={disabled} />
       </Form.Item>
       <MFormButton
         type={ETypeAButtonPC.PRIMARY}

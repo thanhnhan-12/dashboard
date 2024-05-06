@@ -1,0 +1,107 @@
+@mixin d-flex {
+  display: flex;
+  align-items: center;
+}
+
+@mixin f-weight-color {
+  font-weight: 400;
+  color: #121212;
+}
+
+.ant-card-body {
+  padding: 0 !important;
+}
+
+.m-card {
+  font-family: Noto Sans JP;
+  padding: 1.2rem;
+  border: none;
+  width: 30rem;
+
+  .ant-image-img {
+    border-radius: 0.8rem !important;
+  }
+
+  .ant-card-body {
+    margin-top: 1.6rem !important;
+
+    .m-card-title,
+    .m-card-infor .m-card-currency,
+    .m-card-location {
+      @include d-flex;
+    }
+
+    .m-card-title {
+      font-size: 1.4rem;
+
+      p:nth-child(1) {
+        @include f-weight-color;
+      }
+
+      p:nth-child(2) {
+        margin: 0 0.4rem;
+      }
+
+      p:nth-child(3) {
+        font-weight: 700;
+        color: #778089;
+      }
+    }
+
+    .m-card-description {
+      p {
+        font-weight: 700;
+        font-size: 1.6rem;
+        letter-spacing: -0.04rem;
+        color: #121212;
+      }
+
+      .m-card-infor {
+        margin-top: 1rem;
+        .m-card-currency,
+        .m-card-location {
+          img {
+            margin-right: 1rem;
+          }
+
+          span {
+            @include f-weight-color;
+          }
+        }
+
+        .m-card-currency {
+          span:last-child {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ff4500;
+            margin-left: 1rem;
+          }
+        }
+      }
+    }
+  }
+
+  .ant-card-actions {
+    border: none;
+    display: block;
+    position: relative;
+    left: 83%;
+    top: -36rem;
+    li {
+      margin: 0;
+      position: absolute;
+
+      width: inherit !important;
+      span {
+        svg {
+          border: 1px solid #ff4500;
+          border-radius: 0.4rem;
+          padding: 0.8rem;
+          width: 36px;
+          height: 36px;
+          background-color: #fff;
+        }
+      }
+    }
+  }
+}

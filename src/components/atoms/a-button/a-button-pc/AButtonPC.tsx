@@ -12,6 +12,7 @@ export interface IAButtonPC extends Omit<ButtonProps, 'type'> {
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
   loadingIcon?: boolean;
+  showIcon?: boolean;
   handleButtonLoading?: () => void;
 }
 
@@ -26,6 +27,8 @@ const AButtonPC = ({
   rightIcon = <RightOutlined />,
   loading,
   loadingIcon,
+  hidden,
+  showIcon,
   disabled,
   handleButtonLoading,
   ...props
@@ -67,16 +70,23 @@ const AButtonPC = ({
   }
 
   return (
-    <div>
-      <Button
-        style={{ ...style, ...typeButton }}
-        className={classAntd}
-        onClick={handleButtonLoading}
-        loading={loadingIcon}
-        disabled={disabled}
-        {...props}
-      >
-        <Row>
+    <Button
+      style={{ ...style, ...typeButton }}
+      className={classAntd}
+      onClick={handleButtonLoading}
+      loading={loadingIcon}
+      disabled={disabled}
+      hidden={showIcon}
+      {...props}
+    >
+      <Row>
+        {hidden ? (
+          <div>
+            <div style={{ display: 'flex' }}>
+              <div style={{ margin: '0 1rem' }}>{children}</div>
+            </div>
+          </div>
+        ) : (
           <div>
             {topIcon && <div>{topIcon}</div>}
             <div style={{ display: 'flex' }}>
@@ -85,9 +95,9 @@ const AButtonPC = ({
               {loading ? <LoadingOutlined /> : rightIcon && <div>{rightIcon}</div>}
             </div>
           </div>
-        </Row>
-      </Button>
-    </div>
+        )}
+      </Row>
+    </Button>
   );
 };
 

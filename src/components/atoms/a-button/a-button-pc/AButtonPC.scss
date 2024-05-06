@@ -1,6 +1,13 @@
 .a-button {
-  height: 100%;
-  margin: 2rem 0;
+  display: block;
+  border-radius: 4px;
+  width: 13.8rem;
+  height: 80%;
+  padding: 1.2rem;
+
+  .ant-row {
+    justify-content: center;
+  }
 }
 
 .a-button:hover {
@@ -8,6 +15,10 @@
 }
 
 /* 1. Primary */
+.atom-button-primary-default {
+  color: #fff !important;
+}
+
 .atom-button-primary-disabled {
   background-color: #767f85 !important;
 }

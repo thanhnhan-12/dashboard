@@ -1,4 +1,4 @@
-import type { MenuProps, TableColumnsType } from 'antd';
+import type { TableColumnsType } from 'antd';
 import { ITableData, ITableDataNew } from '~/types/table';
 
 export const data: ITableData[] = [
@@ -151,4 +151,13 @@ export const itemsSelect = [
     value: '3',
     label: 'Item 3',
   },
+];
+
+export const tagsData = [
+  'フレンチ',
+  'パティシエ',
+  '特徴アイコン',
+  'アイコン',
+  '特徴アイコン',
+  '特徴アイコン',
 ];

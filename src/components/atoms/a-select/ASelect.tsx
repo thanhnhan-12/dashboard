@@ -4,13 +4,11 @@ import './ASelect.scss';
 
 export interface IASelect extends Omit<SelectProps, 'type'> {}
 
-const ASelect = ({ disabled, options }: IASelect) => {
+const ASelect = ({ disabled, options, placeholder }: IASelect) => {
   const classAntd = clsx('a-select', { disabled: disabled });
 
   return (
-    <div>
-      <Select className={classAntd} placeholder="テキスト" disabled={disabled} options={options} />
-    </div>
+    <Select className={classAntd} placeholder={placeholder} disabled={disabled} options={options} />
   );
 };
 

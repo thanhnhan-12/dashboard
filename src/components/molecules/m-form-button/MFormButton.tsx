@@ -10,22 +10,22 @@ const MFormButton = ({
   size,
   loading,
   disabled,
+  hidden,
   handleButtonLoading,
 }: MFormButtonProps) => {
   return (
-    <div>
-      <AButtonPC
-        type={type}
-        size={size}
-        className={className}
-        htmlType={htmlType}
-        loading={loading}
-        disabled={disabled}
-        handleButtonLoading={handleButtonLoading}
-      >
-        {children}
-      </AButtonPC>
-    </div>
+    <AButtonPC
+      type={type}
+      size={size}
+      className={className}
+      htmlType={htmlType}
+      loading={loading}
+      disabled={disabled}
+      hidden={hidden}
+      handleButtonLoading={handleButtonLoading}
+    >
+      {children}
+    </AButtonPC>
   );
 };
 
