@@ -5,6 +5,7 @@ import OForm from '~organisms/o-form';
 import OTable from '~organisms/o-table';
 import { columnsIntro, data, itemsSelect } from '~utils/data';
 import './OTab.scss';
+import DomExample from '~/components/dom';
 
 // const onChange = (key: string) => {
 //   console.log(key);
@@ -31,6 +32,7 @@ const OTab = () => {
           children: (
             <div style={{ marginLeft: '2rem' }}>
               <MSelect options={itemsSelect} placeholder="テキスト" />
+              <DomExample />
             </div>
           ),
         },

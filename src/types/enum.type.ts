@@ -11,3 +11,8 @@ export enum ETypeInputField {
   RIGHT = 'right',
   SUFFIX = 'suffix',
 }
+
+export enum ETypeCard {
+  VERTICAL = 'vertical',
+  HORIZONTAL = 'horizontal',
+}

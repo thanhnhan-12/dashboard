@@ -1,0 +1,19 @@
+// MCard
+@mixin d-flex {
+    display: flex;
+}
+
+@mixin align-baseline {
+    @include d-flex;
+    align-items: baseline;
+}
+
+@mixin align-center {
+    @include d-flex;
+    align-items: center;
+}
+
+@mixin f-weight-color {
+    font-weight: 400;
+    color: #121212;
+}

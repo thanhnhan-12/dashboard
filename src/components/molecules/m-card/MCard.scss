@@ -1,22 +1,18 @@
-@mixin d-flex {
-  display: flex;
-  align-items: center;
-}
-
-@mixin f-weight-color {
-  font-weight: 400;
-  color: #121212;
-}
-
-.ant-card-body {
-  padding: 0 !important;
-}
+@use "/src/styles/default" as def;
 
 .m-card {
   font-family: Noto Sans JP;
-  padding: 1.2rem;
   border: none;
-  width: 30rem;
+
+  .ant-card-head {
+    padding: 0;
+    border: none;
+    &-wrapper {
+      .ant-card-extra {
+        margin: 0;
+      }
+    }
+  }
 
   .ant-image-img {
     border-radius: 0.8rem !important;
@@ -28,14 +24,14 @@
     .m-card-title,
     .m-card-infor .m-card-currency,
     .m-card-location {
-      @include d-flex;
+      @include def.align-center;
     }
 
     .m-card-title {
       font-size: 1.4rem;
 
       p:nth-child(1) {
-        @include f-weight-color;
+        @include def.f-weight-color;
       }
 
       p:nth-child(2) {
@@ -51,8 +47,6 @@
     .m-card-description {
       p {
         font-weight: 700;
-        font-size: 1.6rem;
-        letter-spacing: -0.04rem;
         color: #121212;
       }
 
@@ -65,7 +59,7 @@
           }
 
           span {
-            @include f-weight-color;
+            @include def.f-weight-color;
           }
         }
 
@@ -78,6 +72,13 @@
           }
         }
       }
+
+      .m-card-text-flex {
+        .m-card-text {
+          font-weight: 400 !important;
+          color: #778089 !important;
+        }
+      }
     }
   }
 
@@ -85,21 +86,123 @@
     border: none;
     display: block;
     position: relative;
-    left: 83%;
-    top: -36rem;
     li {
       margin: 0;
       position: absolute;
-
       width: inherit !important;
       span {
         svg {
           border: 1px solid #ff4500;
           border-radius: 0.4rem;
+          background-color: #fff;
+        }
+      }
+    }
+  }
+}
+
+.m-card-vertical {
+  width: 34.3rem;
+  padding: 1.2rem;
+
+  .ant-card-cover {
+    .ant-image-img {
+      width: 31.9rem;
+      height: 18rem;
+    }
+  }
+
+  .ant-card-body {
+    .m-card-description {
+      .m-card-recruitment {
+        font-size: 1.6rem;
+        letter-spacing: 0.04rem;
+      }
+
+      .m-card-text-flex {
+        .m-card-text {
+          margin-top: 1rem;
+          font-size: 1.4rem;
+          letter-spacing: 0rem !important;
+        }
+        button {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .ant-card-actions {
+    left: 85%;
+    top: -42rem;
+    li {
+      span {
+        svg {
           padding: 0.8rem;
           width: 36px;
           height: 36px;
-          background-color: #fff;
+        }
+      }
+    }
+  }
+}
+
+.m-card-horizontal {
+  width: 115.2rem;
+  padding: 1.6rem;
+
+  .ant-card-cover {
+    float: inline-start;
+    margin-right: 1.6rem;
+
+    .ant-image-img {
+      width: 27.1rem;
+      height: 15.2rem;
+    }
+  }
+
+  .ant-card-body {
+    margin-top: 1rem !important;
+
+    .m-card-description {
+      .m-card-recruitment {
+        font-size: 1.8rem;
+      }
+
+      .m-card-infor {
+        @include def.align-baseline;
+
+        .m-card-currency {
+          margin-right: 2.5rem;
+        }
+      }
+
+      .m-card-text-flex {
+        @include def.align-center;
+
+        .m-card-text {
+          font-size: 1.6rem;
+        }
+
+        button {
+          width: 29.6rem;
+          &:first-child {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  .ant-card-actions {
+    left: 96%;
+    top: -23.5rem;
+    li {
+      span {
+        svg {
+          padding: 1.2rem;
+          width: 48px;
+          height: 48px;
         }
       }
     }
