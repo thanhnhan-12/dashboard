@@ -48,62 +48,60 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <Flex justify="center" align="center">
-        <Form
-          name="basic"
-          labelCol={{ span: 8 }}
-          wrapperCol={{ span: 16 }}
-          initialValues={{ remember: false }}
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
-          autoComplete="off"
+    <Flex className='page-login' justify="center" align="center">
+      <Form
+        name="basic"
+        labelCol={{ span: 8 }}
+        wrapperCol={{ span: 16 }}
+        initialValues={{ remember: false }}
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+        autoComplete="off"
+      >
+        <Title level={3}>Login</Title>
+
+        <Form.Item<FieldType>
+          label="Username"
+          name="username"
+          rules={[{ required: true, message: 'Please input your username!' }]}
         >
-          <Title level={3}>Login</Title>
+          <Input />
+        </Form.Item>
 
-          <Form.Item<FieldType>
-            label="Username"
-            name="username"
-            rules={[{ required: true, message: 'Please input your username!' }]}
-          >
-            <Input />
-          </Form.Item>
+        <Form.Item<FieldType>
+          label="Password"
+          name="password"
+          rules={[{ required: true, message: 'Please input your password!' }]}
+        >
+          <Input.Password />
+        </Form.Item>
 
-          <Form.Item<FieldType>
-            label="Password"
-            name="password"
-            rules={[{ required: true, message: 'Please input your password!' }]}
-          >
-            <Input.Password />
-          </Form.Item>
+        <div className="forgot-pass">
+          <Link to="">Forgot password?</Link>
+        </div>
 
-          <div className="forgot-pass">
-            <Link to="">Forgot password?</Link>
-          </div>
+        <Form.Item<FieldType>
+          name="remember"
+          valuePropName="checked"
+          wrapperCol={{ offset: 8, span: 16 }}
+        >
+          <Checkbox>Remember me</Checkbox>
+        </Form.Item>
 
-          <Form.Item<FieldType>
-            name="remember"
-            valuePropName="checked"
-            wrapperCol={{ offset: 8, span: 16 }}
-          >
-            <Checkbox>Remember me</Checkbox>
-          </Form.Item>
+        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+          <Button type="primary" htmlType="submit" loading={loading}>
+            {loading ? 'Logging in ... ' : 'Login'}
+          </Button>
+        </Form.Item>
 
-          <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-            <Button type="primary" htmlType="submit" loading={loading}>
-              {loading ? 'Logging in ... ' : 'Login'}
-            </Button>
-          </Form.Item>
-
-          <div className="forgot-pass">
-            <span>
-              Don't have an account?
-              <Link to="">Register</Link>
-            </span>
-          </div>
-        </Form>
-      </Flex>
-    </div>
+        <div className="forgot-pass">
+          <span>
+            Don't have an account?
+            <Link to="">Register</Link>
+          </span>
+        </div>
+      </Form>
+    </Flex>
   );
 };
 

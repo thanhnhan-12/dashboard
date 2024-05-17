@@ -127,6 +127,14 @@
         }
         button {
           width: 100%;
+          &:first-child {
+            border-top-right-radius: unset;
+            border-bottom-right-radius: unset;
+          }
+          &:last-child {
+            border-top-left-radius: unset;
+            border-bottom-left-radius: unset;
+          }
         }
       }
     }
@@ -150,6 +158,10 @@
 .m-card-horizontal {
   width: 115.2rem;
   padding: 1.6rem;
+
+  .ant-card-head {
+    width: 99%;
+  }
 
   .ant-card-cover {
     float: inline-start;

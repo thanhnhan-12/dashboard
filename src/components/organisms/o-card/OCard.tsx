@@ -1,8 +1,7 @@
 import { Card, Col, Flex, Row } from 'antd';
 import { CSSProperties } from 'react';
 import { IconCurrency, IconLike, IconLocation } from '~/assets';
-import { ETypeCard } from '~/types/enum.type';
-import { ETypeAButtonPC } from '~/types/enum.type';
+import { ETypeAButtonPC, ETypeCard } from '~/types/enum.type';
 import MCard from '~molecules/m-card';
 import MFormButton from '~molecules/m-form-button';
 import ImageJob from '../../../assets/imageJob.png';
@@ -17,8 +16,8 @@ const gridStyle: CSSProperties = {
 
 const OCard = () => {
   return (
-    <Row gutter={[16, 16]}>
-      <Col lg={16}>
+    <Row gutter={[16, 32]}>
+      <Col xs={24} md={12} lg={16}>
         <Card
           style={{
             border: 'unset',
@@ -83,7 +82,7 @@ const OCard = () => {
         </Card>
       </Col>
 
-      <Col lg={16}>
+      <Col xs={24} md={12} lg={16}>
         <Card
           style={{
             border: 'unset',
@@ -93,7 +92,7 @@ const OCard = () => {
         >
           <Card.Grid hoverable={false} style={gridStyle}>
             <MCard
-              type={ETypeCard.HORIZONTAL}
+              type={ETypeCard.VERTICAL}
               thumbnailUrl={ImageJob}
               title={
                 <div className="m-card-title">
